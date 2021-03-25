@@ -18,5 +18,9 @@ namespace TeamLocal.Data
         }
 
         public DbSet<Item> Items { get; set; }
+
+        public DbSet<Business> Businesses { get; set; }
+
+        public DbSet<Product> Products { get; set; }
     }
 }
