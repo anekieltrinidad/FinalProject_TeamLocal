@@ -21,5 +21,15 @@ namespace TeamLocal.Models
 
         [Required(ErrorMessage = "This field is required")]
         public double Price { get; set; }
+
+        public virtual Category Category { get; set; }
+    }
+
+    public class Category
+    {
+        [Key]
+        public int CategoryID { get; set; }
+
+        public string CategoryName { get; set; }
     }
 }

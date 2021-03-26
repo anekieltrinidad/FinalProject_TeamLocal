@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeamLocal.Data;
 
 namespace TeamLocal.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210326085504_AddProductsAddBusinessAddCategories")]
+    partial class AddProductsAddBusinessAddCategories
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -242,9 +244,6 @@ namespace TeamLocal.Migrations
                     b.Property<int>("Category")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CategoryBusinessCategoryID")
-                        .HasColumnType("int");
-
                     b.Property<string>("ContactInfo")
                         .HasColumnType("nvarchar(max)");
 
@@ -258,8 +257,6 @@ namespace TeamLocal.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("BusinessID");
-
-                    b.HasIndex("CategoryBusinessCategoryID");
 
                     b.ToTable("Businesses");
                 });
@@ -277,21 +274,6 @@ namespace TeamLocal.Migrations
                     b.HasKey("CategoryID");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("TeamLocal.Models.CategoryBusiness", b =>
-                {
-                    b.Property<int>("CategoryID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CategoryName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("CategoryID");
-
-                    b.ToTable("CategoryBusinesses");
                 });
 
             modelBuilder.Entity("TeamLocal.Models.Item", b =>
@@ -405,15 +387,6 @@ namespace TeamLocal.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("TeamLocal.Models.Business", b =>
-                {
-                    b.HasOne("TeamLocal.Models.CategoryBusiness", "CategoryBusiness")
-                        .WithMany()
-                        .HasForeignKey("CategoryBusinessCategoryID");
-
-                    b.Navigation("CategoryBusiness");
                 });
 
             modelBuilder.Entity("TeamLocal.Models.Product", b =>

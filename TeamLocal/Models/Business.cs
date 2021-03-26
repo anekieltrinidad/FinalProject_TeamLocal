@@ -32,19 +32,29 @@ namespace TeamLocal.Models
         public float Rating { get; set; }
 
         public BusinessType Category { get; set; }
+
+        public virtual CategoryBusiness CategoryBusiness {get; set;}
     }
 
     public enum BusinessType
     {
         Food = 1,
         Clothing = 2,
-        [Display(Name = "Car Services")]CarServices = 3,
-        [Display(Name = "Health and Wellness")]Health = 4,
+        [Display(Name = "Car Services")] CarServices = 3,
+        [Display(Name = "Health and Wellness")] Health = 4,
         [Display(Name = "Cleaning Services")] CleaningServices = 5,
         [Display(Name = "Home Improvement")] HomeImprovement = 6,
         Technology = 7,
         Other = 8
 
+    }
+
+    public class CategoryBusiness
+    {
+        [Key]
+        public int CategoryID { get; set; }
+
+        public string CategoryName { get; set; }
     }
 
 

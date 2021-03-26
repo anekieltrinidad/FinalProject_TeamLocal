@@ -21,6 +21,11 @@ namespace TeamLocal.Data
 
         public DbSet<Business> Businesses { get; set; }
 
+        public DbSet<CategoryBusiness> CategoryBusinesses { get; set; }
+
         public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
+        
     }
 }
