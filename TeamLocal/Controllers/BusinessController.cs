@@ -20,7 +20,7 @@ namespace TeamLocal.Controllers
         }
         public IActionResult Index()
         {
-            var list = _context.Businesses.Include(b => b.Category).ToList();
+            var list = _context.Businesses.Include(b => b.CategoryBusiness).ToList();
             return View(list);
         }
 
