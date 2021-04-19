@@ -30,7 +30,7 @@ namespace TeamLocal
             services.AddDbContext<ApplicationDbContext>(option =>
             option.UseSqlServer(Configuration.GetConnectionString("MyConnection")));
 
-            services.AddDefaultIdentity<ApplicationUser>().AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDefaultIdentity<ApplicationUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();

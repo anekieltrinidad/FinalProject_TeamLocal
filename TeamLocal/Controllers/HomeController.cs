@@ -10,7 +10,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace TeamLocal.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "BusinessOwner")]
+    [Authorize(Roles ="Customer")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

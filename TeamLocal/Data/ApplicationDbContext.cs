@@ -25,6 +25,7 @@ namespace TeamLocal.Data
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<TeamLocal.Models.ProjectRole> ProjectRole { get; set; }
 
         
     }

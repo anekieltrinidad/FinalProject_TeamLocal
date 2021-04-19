@@ -10,10 +10,11 @@ using TeamLocal.Models;
 
 using Microsoft.AspNetCore.Http;
 using System.IO;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace TeamLocal.Controllers
 {
+    [Authorize(Roles = "BusinessOwner")]
     public class ProductController : Controller
     {
 

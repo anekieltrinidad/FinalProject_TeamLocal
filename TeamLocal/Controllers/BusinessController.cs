@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TeamLocal.Data;
 using TeamLocal.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TeamLocal.Controllers
 {
+    [Authorize(Roles = "BusinessOwner")]
     public class BusinessController : Controller
     {
         private readonly ApplicationDbContext _context;
