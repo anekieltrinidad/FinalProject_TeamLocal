@@ -22,48 +22,49 @@ namespace TeamLocal.Controllers
         }
         public IActionResult Index()
         {
-            var list = _context.Businesses.Include(b => b.CategoryBusiness).ToList();
+            var list = _context.Businesses.Include(b => b.Category).ToList();
             return View(list);
         }
         // View Page Per Category
-        public IActionResult Food()
-        {
-            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE Category = 1");
-            return View(list);
-        }
-        public IActionResult Clothing()
-        {
-            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE Category = 2");
-            return View(list);
-        }
         public IActionResult CarServices()
         {
-            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE Category = 3");
-            return View(list);
-        }
-        public IActionResult Health()
-        {
-            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE Category = 4");
+            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE CategoryID = 1");
             return View(list);
         }
         public IActionResult Cleaning()
         {
-            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE Category = 5");
+            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE CategoryID = 3");
+            return View(list);
+        }
+        public IActionResult Clothing()
+        {
+            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE CategoryID = 4");
+            return View(list);
+        }
+
+        public IActionResult Food()
+        {
+            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE CategoryID = 5");
+            return View(list);
+        }
+        public IActionResult Health()
+        {
+            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE CategoryID = 6");
             return View(list);
         }
         public IActionResult HomeImprovement()
         {
-            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE Category = 6");
+            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE CategoryID = 7");
             return View(list);
         }
         public IActionResult Technology()
         {
-            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE Category = 7");
+            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE CategoryID = 8");
             return View(list);
         }
         public IActionResult Other()
         {
-            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE Category = 8");
+            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE CategoryID = 9");
             return View(list);
         }
         public IActionResult Create()
@@ -74,13 +75,14 @@ namespace TeamLocal.Controllers
         [HttpPost]
         public IActionResult Create(Business record)
         {
+            var selectedCategory = _context.CategoryBusinesses.Where(c => c.CategoryID == record.CategoryID).SingleOrDefault();
             var business = new Business();
             business.BusinessName = record.BusinessName;
             business.BusinessAddress = record.BusinessAddress;
             business.ContactInfo = record.ContactInfo;
             business.Overview = record.Overview;
             business.SocialMedia = record.SocialMedia;
-            business.Category = record.Category;
+            business.Category = selectedCategory;
 
             _context.Businesses.Add(business);
             _context.SaveChanges();
@@ -108,12 +110,13 @@ namespace TeamLocal.Controllers
         public IActionResult Edit(int? id, Business record)
         {
             var business = _context.Businesses.Where(b => b.BusinessID == id).SingleOrDefault();
+            var selectedCategory = _context.CategoryBusinesses.Where(c => c.CategoryID == record.CategoryID).SingleOrDefault();
             business.BusinessName = record.BusinessName;
             business.BusinessAddress = record.BusinessAddress;
             business.ContactInfo = record.ContactInfo;
             business.Overview = record.Overview;
             business.SocialMedia = record.SocialMedia;
-            business.Category = record.Category;
+            business.Category = selectedCategory;
 
             _context.Businesses.Update(business);
             _context.SaveChanges();

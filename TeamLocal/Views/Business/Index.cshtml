@@ -58,10 +58,11 @@
                 @Html.DisplayFor(modelItem => item.Rating)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Category)
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.BusinessID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BusinessID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.BusinessID">Delete</a>
             </td>
         </tr>
