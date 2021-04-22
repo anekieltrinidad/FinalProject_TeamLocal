@@ -4,7 +4,6 @@
 @{
     ViewData["Title"] = "Create";
 
-    var categoryList = _context.Categories.ToList();
 }
 
 <h1 style="text-align: center;">Create Product</h1>
@@ -33,15 +32,6 @@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
                 <input type="button" class="btn btn-danger" value="Cancel" onclick="@("window.location.href='" + @Url.Action("Index", "Business") + "'");" />
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Category" class="control-label"></label>
-                <select asp-for="Category" class="form-control"
-                        asp-items="@(new SelectList(categoryList, "CategoryID", "CategoryName"))" required>
-                    <option value="">Select one...</option>
-                </select>
-                <span asp-validation-for="Category" class="text-danger"></span>
             </div>
         </form>
     </div>
