@@ -7,7 +7,7 @@
         <div class="form-box">
             <input type="text" class="search-field"
                    placeholder="What are you looking for?">
-            <button type="button" class="btn btn-info">Search</button>
+            <button type="button" class="btn btn-group-lg btn-warning">Search</button>
         </div>
     </form>
 </div>
@@ -22,38 +22,38 @@
 
         <div class="col-lg-3  col-sm-6 img-thumbnail">
             <img src="~/images/carservices.jpg" class="img-thumbnail img-fluid">
-            <h3><a href="~/Business/CarServices" class="nav-link">Car Services</a></h3>
+            <a class="btn btn-outline-warning" onclick="location.href ='@Url.Action("CarServices", "Business")'">Car Services</a>
         </div>
         <div class="col-lg-3  col-sm-6 img-thumbnail">
             <img src="~/images/cleaning.jpg" class="img-thumbnail img-fluid">
-            <h3><a href="~/Business/Cleaning" class="nav-link">Cleaning</a></h3>
+            <a class="btn btn-outline-warning" onclick="location.href ='@Url.Action("Cleaning", "Business")'">Cleaning Services</a>
         </div>
         <div class="col-lg-3 col-sm-6 img-thumbnail">
             <img src="~/images/clothing.jpg" class="img-thumbnail img-fluid">
-            <h3><a href="~/Business/Clothing" class="nav-link">Clothing</a></h3>
+            <a class="btn btn-outline-warning" onclick="location.href ='@Url.Action("Clothing", "Business")'">Clothing</a>
         </div>
         <div class="col-lg-3 col-sm-6 img-thumbnail">
             <img src="~/images/food.jpg" class="img-thumbnail img-fluid">
-            <h3><a href="~/Business/Food" class="nav-link">Food</a></h3>
+            <a class="btn btn-outline-warning" onclick="location.href ='@Url.Action("Food", "Business")'">Food</a>
         </div>
         <div class="col-lg-3 col-sm-6 img-thumbnail">
             <img src="~/images/wellness.jpg" class="img-thumbnail img-fluid">
-            <h3><a href="~/Business/Health" class="nav-link">Health & Wellness</a></h3>
+            <a class="btn btn-outline-warning" onclick="location.href ='@Url.Action("Health", "Business")'">Health and Wellness</a>
         </div>
         <div class="col-lg-3 col-sm-6 img-thumbnail">
             <img src="~/images/home.jpg" class="img-thumbnail img-fluid">
-            <h3><a href="~/Business/HomeImprovement" class="nav-link">Home Improvement</a></h3>
+            <a class="btn btn-outline-warning" onclick="location.href ='@Url.Action("HomeImprovement", "Business")'">Home Improvement</a>
         </div>
         <div class="col-lg-3 col-sm-6 img-thumbnail">
             <img src="~/images/technology.jpg" class="img-thumbnail img-fluid">
-            <h3><a href="~/Business/Technology" class="nav-link">Technology</a></h3>
+            <a class="btn btn-outline-warning" onclick="location.href ='@Url.Action("Technology", "Business")'">Technology</a>
         </div>
         <div class="col-lg-3 col-sm-6 img-thumbnail">
             <img src="~/images/others.jpg" class="img-thumbnail img-fluid">
-            <h3><a href="~/Business/Other" class="nav-link">Others</a></h3>
-        </div>
+            <a class="btn btn-outline-warning" onclick="location.href ='@Url.Action("Other", "Business")'">Others</a>
+        </div> &nbsp; &nbsp;
         <div>
-            <button type="button" onclick="location.href='@Url.Action("Index", "Business")'" class="btn btn-primary" >View All</button>
+            <button type="button" onclick="location.href='@Url.Action("Index", "Business")'" class="btn btn-warning" >View All</button>
         </div>
 
     </div>
