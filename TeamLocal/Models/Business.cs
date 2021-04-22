@@ -34,6 +34,7 @@ namespace TeamLocal.Models
         public BusinessType Category { get; set; }
 
         public virtual CategoryBusiness CategoryBusiness {get; set;}
+
     }
 
     public enum BusinessType

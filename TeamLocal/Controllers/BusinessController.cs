@@ -25,7 +25,47 @@ namespace TeamLocal.Controllers
             var list = _context.Businesses.Include(b => b.CategoryBusiness).ToList();
             return View(list);
         }
-
+        // View Page Per Category
+        public IActionResult Food()
+        {
+            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE Category = 1");
+            return View(list);
+        }
+        public IActionResult Clothing()
+        {
+            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE Category = 2");
+            return View(list);
+        }
+        public IActionResult CarServices()
+        {
+            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE Category = 3");
+            return View(list);
+        }
+        public IActionResult Health()
+        {
+            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE Category = 4");
+            return View(list);
+        }
+        public IActionResult Cleaning()
+        {
+            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE Category = 5");
+            return View(list);
+        }
+        public IActionResult HomeImprovement()
+        {
+            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE Category = 6");
+            return View(list);
+        }
+        public IActionResult Technology()
+        {
+            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE Category = 7");
+            return View(list);
+        }
+        public IActionResult Other()
+        {
+            var list = _context.Businesses.FromSqlRaw("SELECT * FROM Businesses WHERE Category = 8");
+            return View(list);
+        }
         public IActionResult Create()
         {
             return View();
