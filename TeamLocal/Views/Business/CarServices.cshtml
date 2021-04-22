@@ -36,6 +36,8 @@
 
             <div class="card-footer text-right">
                 <button type="button" onclick="location.href='@Url.Action("Create", "Business")'" class="btn btn-warning btn-lg">More..</button>
+                <a asp-action="Edit" asp-route-id="@item.BusinessID">Edit</a>
+                <a asp-action="Delete" asp-route-id="@item.BusinessID">Delete</a>
             </div>
         </div>
     </div>
