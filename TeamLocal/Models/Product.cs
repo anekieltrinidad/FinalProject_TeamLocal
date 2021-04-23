@@ -21,8 +21,10 @@ namespace TeamLocal.Models
 
         [Required(ErrorMessage = "This field is required")]
         public double Price { get; set; }
+        
+        public virtual Business Business { get; set; }
 
-        public virtual Business BusinessID { get; set; }
+        public int? BusinessID { get; set; }
     }
 
 }

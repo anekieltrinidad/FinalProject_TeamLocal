@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using TeamLocal.Data;
 using TeamLocal.Models;
 
 namespace TeamLocal.Areas.Identity.Pages.Account
@@ -24,17 +25,20 @@ namespace TeamLocal.Areas.Identity.Pages.Account
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly ApplicationDbContext _context;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _context = context;
         }
 
         [BindProperty]
@@ -56,6 +60,13 @@ namespace TeamLocal.Areas.Identity.Pages.Account
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
 
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Business Name")]
+            public string BusinessName { get; set; }
+
+            [Display(Name = "Category")]
+            public int CategoryID { get; set; }
 
             [Required]
             [EmailAddress]
@@ -93,7 +104,15 @@ namespace TeamLocal.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName };
+                var business = new Business
+                {
+                    BusinessName = Input.BusinessName,
+                    CategoryID = Input.CategoryID
+                };
+                _context.Businesses.Add(business);
+                _context.SaveChanges();
+
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName, BusinessID = business.BusinessID };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

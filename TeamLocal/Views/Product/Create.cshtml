@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Create";
+    var businessList = _context.Businesses.ToList();
 
 }
 
@@ -30,8 +31,16 @@
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Business" class="control-label"></label>
+                <select asp-for="BusinessID" class="form-control"
+                        asp-items="@(new SelectList(businessList, "BusinessID", "BusinessName"))" required>
+                    <option value="">Choose from the following...</option>
+                </select>
+                <span asp-validation-for="Business" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
-                <input type="button" class="btn btn-danger" value="Cancel" onclick="@("window.location.href='" + @Url.Action("Index", "Business") + "'");" />
+                <input type="button" class="btn btn-danger" value="Cancel" onclick="@("window.location.href='" + @Url.Action("Index", "Product") + "");" />
             </div>
         </form>
     </div>
