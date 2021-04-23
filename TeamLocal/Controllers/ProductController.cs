@@ -26,7 +26,7 @@ namespace TeamLocal.Controllers
         }
         public IActionResult Index()
         {
-            var list = _context.Products.Include(p => p.Category).ToList();
+            var list = _context.Products.ToList();
             return View(list);
         }
 
